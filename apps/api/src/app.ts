@@ -12,6 +12,7 @@ import { env, isProd } from "./env";
 import { AppError } from "./lib/errors";
 import authPlugin from "./plugins/auth";
 import { authRoutes } from "./routes/auth";
+import { postRoutes } from "./routes/posts";
 
 export async function buildApp() {
   const app = Fastify({
@@ -74,6 +75,7 @@ export async function buildApp() {
   app.get("/health", async () => ({ ok: true, time: new Date().toISOString() }));
 
   await app.register(authRoutes, { prefix: "/auth" });
+  await app.register(postRoutes, { prefix: "/posts" });
 
   return app;
 }

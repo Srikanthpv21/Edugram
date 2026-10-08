@@ -13,6 +13,7 @@ import { AppError } from "./lib/errors";
 import authPlugin from "./plugins/auth";
 import { authRoutes } from "./routes/auth";
 import { postRoutes } from "./routes/posts";
+import { userRoutes } from "./routes/users";
 
 export async function buildApp() {
   const app = Fastify({
@@ -75,6 +76,7 @@ export async function buildApp() {
   app.get("/health", async () => ({ ok: true, time: new Date().toISOString() }));
 
   await app.register(authRoutes, { prefix: "/auth" });
+  await app.register(userRoutes, { prefix: "/users" });
   await app.register(postRoutes, { prefix: "/posts" });
 
   return app;

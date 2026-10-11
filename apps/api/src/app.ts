@@ -12,6 +12,7 @@ import { env, isProd } from "./env";
 import { AppError } from "./lib/errors";
 import authPlugin from "./plugins/auth";
 import { authRoutes } from "./routes/auth";
+import { feedRoutes } from "./routes/feed";
 import { postRoutes } from "./routes/posts";
 import { userRoutes } from "./routes/users";
 
@@ -78,6 +79,7 @@ export async function buildApp() {
   await app.register(authRoutes, { prefix: "/auth" });
   await app.register(userRoutes, { prefix: "/users" });
   await app.register(postRoutes, { prefix: "/posts" });
+  await app.register(feedRoutes, { prefix: "/feed" });
 
   return app;
 }

@@ -14,6 +14,7 @@ import authPlugin from "./plugins/auth";
 import { authRoutes } from "./routes/auth";
 import { feedRoutes } from "./routes/feed";
 import { postRoutes } from "./routes/posts";
+import { referralRoutes } from "./routes/referrals";
 import { userRoutes } from "./routes/users";
 
 export async function buildApp() {
@@ -80,6 +81,7 @@ export async function buildApp() {
   await app.register(userRoutes, { prefix: "/users" });
   await app.register(postRoutes, { prefix: "/posts" });
   await app.register(feedRoutes, { prefix: "/feed" });
+  await app.register(referralRoutes, { prefix: "/referrals" });
 
   return app;
 }
